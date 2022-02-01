@@ -2,4 +2,4 @@
 
 > Project Status: In development :warning:
 
-This is a study repository based on Loiane Groner's Data Struture in Java course.
+This is a study repository based on Loiane Groner's Data Struture Java course.
