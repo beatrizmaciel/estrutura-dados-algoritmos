@@ -103,5 +103,15 @@ public class List<T> {
 		
 		return s.toString();
 	}
+	
+	public boolean contem(T elemento) {
+		
+		int pos = busca(elemento);
+		if (pos > -1) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }
