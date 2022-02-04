@@ -113,5 +113,29 @@ public class List<T> {
 		
 		return false;
 	}
+	
+	public int ultimoIndice(T elemento) {
+
+		for (int i = this.tamanho - 1; i >= 0; i--) {
+			if(this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	
+	// minha tentativa \/ tentativa correta /\
+	
+//	public int ultimoIndice(int posicao) {
+//		for (int i = 0; i >= tamanho; i++) {
+//			if (i == tamanho) {
+//				i = posicao;
+//				return posicao;
+//			}
+//		}
+//		
+//		return -1;
+//	}
 
 }
