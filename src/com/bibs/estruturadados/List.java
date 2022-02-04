@@ -1,18 +1,20 @@
 package com.bibs.estruturadados;
 
-import java.util.Arrays;
+import java.lang.reflect.Array;
 
-public class VetorObjetos {
+//   \/ generics
+public class List<T> {
 	
-	private Object[] elementos;
+	private T[] elementos;
 	private int tamanho;
 	
-	public VetorObjetos(int capacidade) {
-		this.elementos = new Object[capacidade];
+	// java não permite construtor com <T>, então usamos o casting
+	public List(int capacidade) {
+		this.elementos = (T[]) new Object[capacidade];
 		this.tamanho = 0; 
 	}
 	
-	public boolean adiciona(Object elemento){
+	public boolean adiciona(T elemento){
 		this.aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
@@ -22,7 +24,7 @@ public class VetorObjetos {
 		return false;
 	}
 	
-	public boolean adiciona(int posicao, Object elemento) {
+	public boolean adiciona(int posicao, T elemento) {
 		
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
@@ -43,7 +45,7 @@ public class VetorObjetos {
 	
 	private void aumentaCapacidade() {
 		if (this.tamanho == this.elementos.length) {
-			Object[] elementosNovos = new Object[this.elementos.length * 2];
+			T[] elementosNovos = (T[])new Object[this.elementos.length * 2];
 			for (int i = 0; i < this.elementos.length; i++) {
 				elementosNovos[i] = this.elementos[i];
 			}
@@ -51,7 +53,7 @@ public class VetorObjetos {
 		}
 	}
 	
-	public Object busca(int posicao) {
+	public T busca(int posicao) {
 		
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
@@ -59,7 +61,7 @@ public class VetorObjetos {
 		return elementos[posicao];
 	}
 	
-	public int busca(Object elemento) {
+	public int busca(T elemento) {
 		for (int i = 0; i < this.tamanho; i++) {
 			if(this.elementos[i].equals(elemento)) {
 				return i;
