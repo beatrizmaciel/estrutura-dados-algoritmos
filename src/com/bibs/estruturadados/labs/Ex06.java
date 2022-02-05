@@ -14,15 +14,15 @@ public class Ex06 {
 
 		// criar vetor com 20 de capacidade
 		List<Contato> lista = new List<Contato>(20);
-	
+
 		// criar e adicionar contatos
-//		criarContatosDinamicamente(5, lista);
-		
+		//		criarContatosDinamicamente(5, lista);
+
 		// criar um menu para que o usuário escolha a opção
 		int opcao = 1;
 		while (opcao != 0) {
 			opcao = obterOpcaoMenu(sc);
-			
+
 			switch (opcao) {
 			case 1:
 				adicionarContatoFinal(sc, lista);
@@ -31,6 +31,27 @@ public class Ex06 {
 				adicionarContatoPosicao(sc, lista);
 				break;
 			case 3:
+				obtemContatoPosicao(sc, lista);
+				break;
+			case 4:
+				obtemContato(sc, lista);
+				break;
+			case 5:
+				
+				break;
+			case 6:
+				
+				break;
+			case 7:
+				
+				break;
+			case 8:
+				
+				break;
+			case 9:
+				
+				break;
+			case 10:
 				
 				break;
 			default:
@@ -40,29 +61,55 @@ public class Ex06 {
 		System.out.println("Usuário digitou 0, programa terminado9");
 	}
 	
+	private static void obtemContato(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição", sc);
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println("Contato existe, seguem dados");
+			System.out.println(contato);
+			System.out.println("Fazendo pesquisa do contato encontrado: ");
+			pos = lista.busca(contato);
+			
+			System.out.println("Contato encontrado na posição " + pos);
+		} catch (Exception e) {
+			System.out.println("Posição inválida!");
+		}
+	}
+
+	private static void obtemContatoPosicao(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição", sc);
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println("Contato existe, seguem dados");
+			System.out.println(contato);
+		} catch (Exception e) {
+			System.out.println("Posição inválida!");
+		}
+	}
+
 	private static void adicionarContatoFinal(Scanner sc, List<Contato> lista) {
 		System.out.println("Criando um contato. Insira as informações: ");
 		String nome = leInformacao("Digite o nome, sc", sc);
 		String telefone = leInformacao("Digite o telefone", sc);
 		String email = leInformacao("Digite o email", sc);
-		
+
 		Contato contato = new Contato(nome, telefone, email);
-		
+
 		lista.adiciona(contato);
 		System.out.println("Contato adicionado com sucesso");
 		System.out.println(contato);
 	}
-	
+
 	private static void adicionarContatoPosicao(Scanner sc, List<Contato> lista) {
 		System.out.println("Criando um contato. Insira as informações: ");
 		String nome = leInformacao("Digite o nome, sc", sc);
 		String telefone = leInformacao("Digite o telefone", sc);
 		String email = leInformacao("Digite o email", sc);
-		
+
 		Contato contato = new Contato(nome, telefone, email);
-		
+
 		int pos = leInformacaoInt("Entre com a posição a adicionar o contato", sc);
-		
+
 		try {
 			lista.adiciona(pos, contato);
 			System.out.println("Contato adicionado com sucesso");
@@ -70,48 +117,48 @@ public class Ex06 {
 		} catch (Exception e) {
 			System.out.println("Posição inválida, contato não adicionado");
 		}
-		
+
 		lista.adiciona(contato);
 		System.out.println("Contato adicionado com sucesso");
 		System.out.println(contato);
 	}
-	
+
 	private static String leInformacao(String msg, Scanner sc) {
 		System.out.println(msg);
 		String entrada = sc.nextLine();
-		
+
 		return entrada;
 	}
-	
+
 	private static int leInformacaoInt(String msg, Scanner sc) {
-		
+
 		boolean entradaValida = false;
 		int num = 0;
-		
+
 		while (!entradaValida) {
 			try {
 				System.out.println(msg);
 				String entrada = sc.nextLine();
-				
+
 				num = Integer.parseInt(entrada);
-				
+
 				entradaValida = true;
-				
+
 			} catch (Exception e){
 				System.out.println("Entrada inválida, digite novamente");
 			}
-			
+
 		}
-		
+
 		return num;
 	}
-	
+
 	private static int obterOpcaoMenu(Scanner sc) {
-		
+
 		boolean entradaValida = false;
 		int opcao = 0;
 		String entrada;
-		
+
 		while (!entradaValida) {
 			System.out.println("Digite a opção desejada: ");
 			System.out.println("1: Adiciona contato no final do vetor");
@@ -126,24 +173,24 @@ public class Ex06 {
 			System.out.println("10: Exclui todos os contatos do vetor");
 			System.out.println("11: Imprime vetor");
 			System.out.println("0: Sair");
-			
+
 			try {
 				entrada = sc.nextLine();
 				opcao = Integer.parseInt(entrada);
-				
+
 				if (opcao >= 0 && opcao <= 11) {
 					entradaValida = true;
 				} else {
 					throw new Exception();
 				}
-				
+
 			} catch (Exception e) {
 				System.out.println("Entrada inválida, digite novamente\n\n");
 			}
-			
+
 		}
 
-		
+
 		return opcao;
 	}
 
