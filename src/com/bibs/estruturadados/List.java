@@ -158,4 +158,27 @@ public class List<T> {
 	//		}
 	//	}
 
+
+	public void limpa() {
+
+		// opção 3 (ajuda o garbage colector)
+
+		for (int i = 0; i < this.tamanho; i++) {
+			this.elementos[i] = null;
+		}
+
+		this.tamanho = 0;
+	}
+
+	// minha tentativa \/ tentativa correta /\
+
+	//	public void limpa() {
+	//		int posicao = 0;
+	//		if (posicao < this.tamanho) {
+	//			for(int i = posicao; i < this.tamanho-1; i++) {
+	//				this.elementos[i] = this.elementos[i+1];
+	//				posicao++;
+	//			}
+	//		}
+	//		this.tamanho--;
 }
