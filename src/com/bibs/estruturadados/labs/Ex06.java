@@ -16,7 +16,7 @@ public class Ex06 {
 		List<Contato> lista = new List<Contato>(20);
 
 		// criar e adicionar contatos
-		//		criarContatosDinamicamente(5, lista);
+		criarContatosDinamicamente(5, lista);
 
 		// criar um menu para que o usuário escolha a opção
 		int opcao = 1;
@@ -37,22 +37,25 @@ public class Ex06 {
 				obtemContato(sc, lista);
 				break;
 			case 5:
-				
+				pesquisarUltimoIndice(sc, lista);
 				break;
 			case 6:
-				
+				pesquisarContatoExiste(sc, lista);
 				break;
 			case 7:
-				
+				excluirPorPosicao(sc, lista);
 				break;
 			case 8:
-				
+				excluirContato(sc, lista);
 				break;
 			case 9:
-				
+				imprimeTamanhoVetor(lista);
 				break;
 			case 10:
-				
+				limparVetor(lista);
+				break;
+			case 11:
+				imprimeVetor(lista);
 				break;
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + opcao);
@@ -61,6 +64,74 @@ public class Ex06 {
 		System.out.println("Usuário digitou 0, programa terminado9");
 	}
 	
+	private static void imprimeVetor(List<Contato> lista) {
+		System.out.println(lista);
+	}
+	
+	private static void limparVetor(List<Contato> lista) {
+		lista.limpa();
+		System.out.println("Todos os contatos foram excluídos");
+	}
+	
+	private static void imprimeTamanhoVetor(List<Contato> lista) {
+		System.out.println("Tamanho do vetor é " + lista.tamanho);
+	}
+
+	private static void excluirContato(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição a ser removida", sc);
+		try {
+			Contato contato = lista.busca(pos);
+			lista.remove(contato);
+		} catch (Exception e) {
+			System.out.println("Contato excluído");
+		}
+	}
+
+	private static void excluirPorPosicao(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição a ser removida", sc);
+		try {
+			lista.remove(pos);
+		} catch (Exception e) {
+			System.out.println("Contato excluído");
+		}
+	}
+
+	private static void pesquisarContatoExiste(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição", sc);
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println("Contato existe, seguem dados");
+			System.out.println(contato);
+
+			boolean existe = lista.contem(contato);
+
+			if(existe) {
+				System.out.println("Contato existe, seguem dados:");
+				System.out.println(contato);
+			} else {
+				System.out.println("Contato não existe");
+			}
+
+		} catch (Exception e) {
+			System.out.println("Posição inválida!");
+		}
+	}
+
+	private static void pesquisarUltimoIndice(Scanner sc, List<Contato> lista) {
+		int pos = leInformacaoInt("Entre com a posição", sc);
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println("Contato existe, seguem dados");
+			System.out.println(contato);
+			System.out.println("Fazendo pesquisa do último índice contato encontrado: ");
+			pos = lista.ultimoIndice(contato);
+
+			System.out.println("Contato encontrado na posição " + pos);
+		} catch (Exception e) {
+			System.out.println("Posição inválida!");
+		}
+	}
+
 	private static void obtemContato(Scanner sc, List<Contato> lista) {
 		int pos = leInformacaoInt("Entre com a posição", sc);
 		try {
@@ -69,7 +140,7 @@ public class Ex06 {
 			System.out.println(contato);
 			System.out.println("Fazendo pesquisa do contato encontrado: ");
 			pos = lista.busca(contato);
-			
+
 			System.out.println("Contato encontrado na posição " + pos);
 		} catch (Exception e) {
 			System.out.println("Posição inválida!");
@@ -89,7 +160,7 @@ public class Ex06 {
 
 	private static void adicionarContatoFinal(Scanner sc, List<Contato> lista) {
 		System.out.println("Criando um contato. Insira as informações: ");
-		String nome = leInformacao("Digite o nome, sc", sc);
+		String nome = leInformacao("Digite o nome", sc);
 		String telefone = leInformacao("Digite o telefone", sc);
 		String email = leInformacao("Digite o email", sc);
 
@@ -102,7 +173,7 @@ public class Ex06 {
 
 	private static void adicionarContatoPosicao(Scanner sc, List<Contato> lista) {
 		System.out.println("Criando um contato. Insira as informações: ");
-		String nome = leInformacao("Digite o nome, sc", sc);
+		String nome = leInformacao("Digite o nome", sc);
 		String telefone = leInformacao("Digite o telefone", sc);
 		String email = leInformacao("Digite o email", sc);
 
@@ -165,7 +236,7 @@ public class Ex06 {
 			System.out.println("2: Adiciona contato em uma posição específica");
 			System.out.println("3: Obtém contato de uma posição específica");
 			System.out.println("4: Consulta contato");
-			System.out.println("5: Consulta último índice do conteto");
+			System.out.println("5: Consulta último índice do contato");
 			System.out.println("6: Verifica se o contato existe");
 			System.out.println("7: Excluir contato por posição");
 			System.out.println("8: Excluir contao");
@@ -208,3 +279,5 @@ public class Ex06 {
 		}
 	}
 }
+
+// parei em 30'

@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 public class List<T> {
 
 	private T[] elementos;
-	private int tamanho;
+	public int tamanho;
 
 	// java não permite construtor com <T>, então usamos o casting
 	public List(int capacidade) {
