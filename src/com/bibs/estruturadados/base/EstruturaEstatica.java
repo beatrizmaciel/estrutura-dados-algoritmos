@@ -14,6 +14,10 @@ public class EstruturaEstatica<T> {
 		this(10);
 	}
 	
+	public boolean estaVazio() {
+		return this.tamanho == 0;
+	}
+	
 	protected boolean adiciona(T elemento){
 		this.aumentaCapacidade();
 		if(this.tamanho < this.elementos.length) {
@@ -51,7 +55,7 @@ public class EstruturaEstatica<T> {
 		tamanho--;
 	}
 	
-	private void aumentaCapacidade() {
+	protected void aumentaCapacidade() {
 		if (this.tamanho == this.elementos.length) {
 			T[] elementosNovos = (T[])new Object[this.elementos.length * 2];
 			for (int i = 0; i < this.elementos.length; i++) {
