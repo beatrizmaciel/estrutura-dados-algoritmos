@@ -21,8 +21,6 @@ public class Ex02 {
 
 				if (num == 0){
 
-					//pilha par
-
 					Integer desempilhado = par.desempilha();
 
 					if (desempilhado == null){
@@ -30,8 +28,6 @@ public class Ex02 {
 					} else {
 						System.out.println("Desempilhando da pilha par: " + desempilhado);
 					}
-
-					//pilha impar
 
 					desempilhado = impar.desempilha();
 
@@ -53,13 +49,13 @@ public class Ex02 {
 
 			System.out.println("Desempilhando todos os números da pilhar par");
 
-			while (!par.estaVazia()){
+			while (!par.estaVazio()){
 				System.out.println("Desempilhando da pilha par: " + par.desempilha());
 			}
 
 			System.out.println("Desempilhando todos os números da pilhar ímpar");
 
-			while (!impar.estaVazia()){
+			while (!impar.estaVazio()){
 				System.out.println("Desempilhando da pilha impar: " + impar.desempilha());
 			}
 
