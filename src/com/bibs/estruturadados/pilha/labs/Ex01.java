@@ -36,7 +36,7 @@ public class Ex01 {
 		
 		while(!pilha.estaVazio()) {
 
-				System.out.println("Número ímpar, desempilhando o elemento da pilha "
+				System.out.println("Desempilhando o elemento da pilha "
 						+ pilha.desempilha());
 			}
 		
